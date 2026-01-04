@@ -19,7 +19,7 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      ✅⬇️⬇️⬇️ ВОТ СЮДА ⬇️⬇️⬇️
+      
       - name: Download WebRTC AAR
         run: |
           mkdir -p app/libs
