@@ -5,7 +5,7 @@ pluginManagement {
         mavenCentral()
     }
     plugins {
-        id "com.android.application" version "8.1.1" // версия плагина Android Gradle Plugin
+        id "com.android.application" version "8.1.1"
         id "com.android.library" version "8.1.1"
         id "org.jetbrains.kotlin.android" version "1.9.0"
     }
@@ -16,6 +16,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        flatDir {
+            dirs 'app/libs' // для локальных AAR файлов, например WebRTC
+        }
     }
 }
 
