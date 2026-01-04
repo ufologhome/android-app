@@ -8,12 +8,13 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView chatTextView;
     private EditText messageInput;
-    private Button sendButton;
+    private Button sendButton, callButton;
     private ScrollView scrollView;
 
     private ChatClient client;
+    private WebRTCCallManager callManager;
 
-    private final String username = "UFO"; // UFO / Julyet
+    private final String username = "Julyet"; // UFO / Julyet
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,34 +24,21 @@ public class MainActivity extends AppCompatActivity {
         chatTextView = findViewById(R.id.chatTextView);
         messageInput = findViewById(R.id.messageInput);
         sendButton = findViewById(R.id.sendButton);
+        callButton = findViewById(R.id.callButton);
         scrollView = findViewById(R.id.scrollView);
 
-        String ip = "192.168.0.150";
-        int port = 9009;
-        String key = "12345";
-
-        client = new ChatClient(ip, port, key, username,
+        // --- текстовый чат ---
+        client = new ChatClient("192.168.0.150", 9009, "12345", username,
                 new ChatClient.OnMessageListener() {
-
             @Override
             public void onMessage(String message) {
-                // НЕ показываем сообщение,
-                // которое сервер прислал от нас самих
-                if (message.startsWith(username + ":")) {
-                    return;
-                }
-
+                if (message.startsWith(username + ":")) return;
                 chatTextView.append(message + "\n");
                 scrollToBottom();
             }
-
             @Override
             public void onError(String error) {
-                Toast.makeText(
-                        MainActivity.this,
-                        error,
-                        Toast.LENGTH_SHORT
-                ).show();
+                Toast.makeText(MainActivity.this, error, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -58,28 +46,28 @@ public class MainActivity extends AppCompatActivity {
             String msg = messageInput.getText().toString().trim();
             if (msg.isEmpty()) return;
 
-            // 1️⃣ СРАЗУ показываем своё сообщение
             chatTextView.append("Me: " + msg + "\n");
             scrollToBottom();
-
-            // 2️⃣ Отправляем на сервер
             client.send(msg);
-
             messageInput.setText("");
+        });
+
+        // --- звонки ---
+        callManager = new WebRTCCallManager(this, username);
+
+        callButton.setOnClickListener(v -> {
+            String target = "UFO"; // или выбранный собеседник
+            callManager.call(target);
         });
     }
 
     private void scrollToBottom() {
-        scrollView.post(() ->
-                scrollView.fullScroll(ScrollView.FOCUS_DOWN)
-        );
+        scrollView.post(() -> scrollView.fullScroll(ScrollView.FOCUS_DOWN));
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (client != null) {
-            client.close();
-        }
+        if (client != null) client.close();
     }
 }
