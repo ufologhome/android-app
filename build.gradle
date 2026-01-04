@@ -1,4 +1,5 @@
 // корневой build.gradle
+// Здесь только зависимости плагинов, репозитории берутся из settings.gradle
 buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:8.1.1"
@@ -7,5 +8,5 @@ buildscript {
 }
 
 allprojects {
-    // репозитории здесь не указываем!
+    // НЕ указываем репозитории здесь!
 }
