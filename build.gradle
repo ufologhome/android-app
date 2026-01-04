@@ -1,12 +1,1 @@
-// корневой build.gradle
-// Здесь только classpath для IDE и Gradle
-buildscript {
-    dependencies {
-        classpath "com.android.tools.build:gradle:8.1.1"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0"
-    }
-}
 
-allprojects {
-    // НЕ добавляем google() или mavenCentral() сюда!
-}
