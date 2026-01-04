@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'org.jetbrains.kotlin.android' version '1.9.0' apply false
 }
 
 android {
@@ -14,18 +15,29 @@ android {
         versionName "1.0"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
+    buildFeatures {
+        viewBinding true
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
+}
+
+repositories {
+    google()
+    mavenCentral()
+    maven { url 'https://maven.google.com' }
 }
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // WebSocket
+    implementation 'org.java-websocket:Java-WebSocket:1.5.3'
+
+    // WebRTC
+    implementation 'org.webrtc:google-webrtc:1.0.32006'
 }
