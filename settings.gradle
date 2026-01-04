@@ -1,7 +1,7 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()  // для kotlin plugin
-        google()              // для android plugin
+        gradlePluginPortal()  // kotlin plugin
+        google()              // android plugin
         mavenCentral()
     }
     plugins {
@@ -15,7 +15,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        flatDir { dirs 'app/libs' } // локальные .aar (WebRTC)
+        flatDir { dirs 'app/libs' } // локальные AAR (WebRTC)
     }
 }
 
