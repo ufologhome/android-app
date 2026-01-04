@@ -17,6 +17,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
 
     compileOptions {
@@ -36,6 +37,6 @@ dependencies {
     // WebSocket
     implementation 'org.java-websocket:Java-WebSocket:1.5.3'
 
-    // WebRTC
-    implementation 'org.webrtc:google-webrtc:1.0.32006'
+    // WebRTC (локальный AAR)
+    implementation(name: 'google-webrtc-1.0.32006', ext: 'aar')
 }
