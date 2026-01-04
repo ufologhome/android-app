@@ -15,11 +15,6 @@ android {
         versionName "1.0"
     }
 
-    buildFeatures {
-        viewBinding true
-        dataBinding true
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -30,20 +25,11 @@ android {
     }
 }
 
-/* 🔴 ВАЖНО: flatDir ОБЯЗАТЕЛЕН */
-repositories {
-    flatDir {
-        dirs 'libs'
-    }
-}
-
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-
-    // WebSocket
     implementation 'org.java-websocket:Java-WebSocket:1.5.3'
 
-    // WebRTC (локальный AAR)
+    // ЛОКАЛЬНЫЙ WebRTC AAR
     implementation(name: 'google-webrtc-1.0.32006', ext: 'aar')
 }
