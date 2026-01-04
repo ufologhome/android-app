@@ -1,12 +1,11 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
-        google()
+        gradlePluginPortal()  // для kotlin plugin
+        google()              // для android plugin
         mavenCentral()
     }
     plugins {
         id "com.android.application" version "8.1.1"
-        id "com.android.library" version "8.1.1"
         id "org.jetbrains.kotlin.android" version "1.9.0"
     }
 }
@@ -16,7 +15,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        flatDir { dirs 'app/libs' } // для локального AAR (WebRTC)
+        flatDir { dirs 'app/libs' } // локальные .aar (WebRTC)
     }
 }
 
