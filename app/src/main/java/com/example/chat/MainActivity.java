@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ChatClient client;
 
-    private final String username = "Julyet"; // UFO / Julyet
+    private final String username = "UFO"; // UFO / Julyet
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
