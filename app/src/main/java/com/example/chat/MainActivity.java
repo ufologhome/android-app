@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         sendButton = findViewById(R.id.sendButton);
         scrollView = findViewById(R.id.scrollView);
 
-        String ip = "YOUR_SERVER_IP";
+        String ip = "192.168.0.150";
         int port = 9009;
         String key = "12345";
         String username = "UFO"; // or "Julyet"
