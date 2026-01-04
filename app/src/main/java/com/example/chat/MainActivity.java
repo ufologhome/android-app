@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         String ip = "192.168.0.150";
         int port = 9009;
         String key = "12345";
-        String username = "UFO"; // or "Julyet"
+        String username = "Julyet"; // or "Julyet"
 
         client = new ChatClient(ip, port, key, username, new ChatClient.OnMessageListener() {
             @Override
