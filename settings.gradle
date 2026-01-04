@@ -16,9 +16,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        flatDir {
-            dirs 'app/libs' // для локальных AAR файлов, например WebRTC
-        }
+        flatDir { dirs 'app/libs' } // для локального AAR (WebRTC)
     }
 }
 
